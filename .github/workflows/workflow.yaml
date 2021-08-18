@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: test-artifact
+          name: clone-down
           path: .
       - run: bash ci/build-app.sh
       - uses: actions/upload-artifact@v2
