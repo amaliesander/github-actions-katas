@@ -14,27 +14,27 @@ jobs:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
-    - uses: actions/download-artifact@v2
-      with:
-        name: my-artifact
-        path: .
-    - run: bash ci/unit-test-app.sh
-    - uses: actions/upload-artifact@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+          path: .
+      - run: bash ci/unit-test-app.sh
+      - uses: actions/upload-artifact@v2
         with:
           name: code
           path: .
-    - needs: [Clone-down]
+      - needs: [Clone-down]
   Build:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
-    - uses: actions/download-artifact@v2
-      with:
-        name: my-artifact
-        path: .
-    - run: bash ci/build-app.sh
-    - uses: actions/upload-artifact@v2
+      - uses: actions/download-artifact@v2
         with:
-          name: code
+          name: my-artifact
           path: .
-    - needs: [Clone-down]
+      - run: bash ci/build-app.sh
+      - uses: actions/upload-artifact@v2
+          with:
+            name: code
+            path: .
+      - needs: [Clone-down]
