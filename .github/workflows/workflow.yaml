@@ -23,7 +23,7 @@ jobs:
         with:
           name: code
           path: .
-      - needs: [Clone-down]
+    needs: [Clone-down]
   Build:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
@@ -37,4 +37,4 @@ jobs:
         with:
           name: code
           path: .
-      - needs: [Clone-down]
+    needs: [Clone-down]
