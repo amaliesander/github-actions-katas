@@ -47,7 +47,7 @@ jobs:
         with:
           name: code
           path: .
-      - run: bash export GIT_COMMIT="GA-$GITHUB_SHA"
+      - run: export GIT_COMMIT="GA-$GITHUB_SHA"
       - run: bash ci/build-docker.sh
       - run: bash ci/push-docker.sh
 
