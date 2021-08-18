@@ -9,6 +9,6 @@ jobs:
       - name: my-step
         run: bash ci/build-app.sh
       - name: unit-test
-        run: bash ci/uni-test-app.sh
+        run: bash ci/unit-test-app.sh
 
         
