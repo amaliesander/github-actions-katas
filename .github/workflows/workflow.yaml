@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/upload-artifact@v2
         with:
-          name: code
+          name: clone-down
           path: .
   Test:
     runs-on: ubuntu-latest
@@ -16,13 +16,9 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: my-artifact
+          name: clone-down
           path: .
       - run: bash ci/unit-test-app.sh
-      - uses: actions/upload-artifact@v2
-        with:
-          name: code
-          path: .
     needs: [Clone-down]
   Build:
     runs-on: ubuntu-latest
@@ -30,7 +26,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: my-artifact
+          name: test-artifact
           path: .
       - run: bash ci/build-app.sh
       - uses: actions/upload-artifact@v2
